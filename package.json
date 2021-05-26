@@ -1,0 +1,28 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:edmilson-dk/inn-inteligence-test-api.git",
+  "author": "edmilson-dk <droidvidaboa@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.12",
+    "@types/helmet": "^4.0.0",
+    "@types/json-server": "^0.14.3",
+    "@types/knex": "^0.16.1",
+    "@types/pg": "^8.6.0",
+    "json-server": "^0.16.3",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "knex": "^0.95.6",
+    "pg": "^8.6.0"
+  }
+}
