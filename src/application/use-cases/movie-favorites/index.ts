@@ -10,18 +10,18 @@ export class MovieFavoritesUseCases implements IMovieFavoritesUseCases {
   constructor(movieApiRepository: IMovieApiRepository, movieFavoritesRepository: IMovieFavoritesRepository) {
     this.movieApiRepository = movieApiRepository;
     this.movieFavoritesRepository = movieFavoritesRepository;
-    
+
     Object.freeze(this);
   }
 
   async addMovieFavoriteById(id: string) {
     const storedMovie = await this.movieFavoritesRepository.findMovieFavoriteById(id);
-   
+
     if (storedMovie) return;
 
     const data = await this.movieApiRepository.getOneMovieById(id);
     if (!data) return;
-    
+
     await this.movieFavoritesRepository.addMovieFavorite(data);
   }
 
