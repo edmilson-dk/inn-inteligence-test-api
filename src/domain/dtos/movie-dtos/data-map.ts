@@ -1,6 +1,15 @@
 import { MovieSearchDataPreviewDTO, MovieSearchDataOneMovieDTO } from ".";
 
 export class MovieSearchMapper {
+  static previewMoviesToDto(data: any): MovieSearchDataPreviewDTO {
+    return {
+      title: data.title,
+      poster: data.poster,
+      year: data.year,
+      id: data.id
+    }
+  }
+
   static oneMovieToDto(data: any): MovieSearchDataOneMovieDTO {
     return {
       title: data.title,
