@@ -20,6 +20,9 @@ export type OmdbAPiSearchOneMovieDataType = {
   Country: string;
   Awards: string;
   Poster: string;
+  Response: string;
+  Type: string;
+  imdbID: string;
 }
 
 export type OmdbApiSearchAllMoviesResponseType = {
