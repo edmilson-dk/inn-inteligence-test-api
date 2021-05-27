@@ -12,9 +12,9 @@ const routes = Router();
 
 routes.get("/search/all", adaptRoute(makeGetAllMoviesFactory()));
 routes.get("/search/infos/:id", adaptRoute(makeGetoOneMovieFactory()));
-routes.post("/favorites/add", adaptRoute(makeAddOneMovieFavoriteFactory()));
-routes.delete("/favorites/:id", adaptRoute(makeDeleteOneMovieFavoriteFactory()));
-routes.get("/favorite/:id", adaptRoute(makeGetoOneMovieFavoriteFactory()));
 routes.get("/favorites", adaptRoute(makeGetAllMoviesFavoritesFactory()));
+routes.post("/favorite/add", adaptRoute(makeAddOneMovieFavoriteFactory()));
+routes.delete("/favorite/drop/:id", adaptRoute(makeDeleteOneMovieFavoriteFactory()));
+routes.get("/favorite/:id", adaptRoute(makeGetoOneMovieFavoriteFactory()));
 
 export default routes;
