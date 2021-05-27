@@ -1,7 +1,7 @@
 import { IMovieSearchUseCases } from "src/domain/use-cases/movie-search";
 import { IMovieApiRepository } from "src/application/repositories/movie-api";
-import { MovieSearchMapper } from "src/domain/dtos/movie-search-dtos/data-map";
-import { MovieSearchDataPreviewDTO } from "src/domain/dtos/movie-search-dtos";
+import { MovieSearchMapper } from "src/domain/dtos/movie-dtos/data-map";
+import { MovieSearchDataOneMovieDTO, MovieSearchDataPreviewDTO } from "src/domain/dtos/movie-dtos";
 
 export class MovieSearchUseCases implements IMovieSearchUseCases {
   private readonly movieApiRepository: IMovieApiRepository;
@@ -18,5 +18,13 @@ export class MovieSearchUseCases implements IMovieSearchUseCases {
 
     const data = result.map(item => MovieSearchMapper.previewMoviesToDto(item));
     return data;
+  }
+
+  async getOneMovieById(id: string): Promise<MovieSearchDataOneMovieDTO | []> {
+    const result = await this.movieApiRepository.getOneMovieById(id);
+
+    if (!result) return [];
+
+    return result;
   }
 }
