@@ -6,8 +6,11 @@
   "author": "edmilson-dk <droidvidaboa@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && node build/src/main/server.js",
-    "dev": "npx ts-node-dev --respawn --pretty --transpile-only src/main/server.ts"
+    "start": "NODE_PATH=./build node build/src/main/server.js",
+    "dev": "NODE_PATH=./ npx ts-node-dev --respawn --pretty --transpile-only src/main/server.ts",
+    "knex:migrate:make": "knex --knexfile knexfile.ts -x ts migrate:make",
+    "knex:migrate:latest": "knex --knexfile knexfile.ts migrate:latest",
+    "knex:migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback --all"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
