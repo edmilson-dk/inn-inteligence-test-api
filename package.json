@@ -5,6 +5,10 @@
   "repository": "git@github.com:edmilson-dk/inn-inteligence-test-api.git",
   "author": "edmilson-dk <droidvidaboa@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "tsc && node build/src/main/server.js",
+    "dev": "npx ts-node-dev --respawn --pretty --transpile-only src/main/server.ts"
+  },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/cors": "^2.8.10",
