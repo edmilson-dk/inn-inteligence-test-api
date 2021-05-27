@@ -1,5 +1,5 @@
 import { IMovieFavoritesUseCases } from "src/domain/use-cases/movie-favorites";
-import { ok, serverError } from "../../http/http-response-type";
+import { badRequest, ok, serverError } from "../../http/http-response-type";
 import { HttpRequest, HttpResponse } from "../../http/ports/http";
 import { BaseController } from "../baseControler";
 
@@ -14,11 +14,12 @@ export class AddOneMovieFavoriteController implements BaseController {
     try {
       const { id } = httpRequest.body;
 
+      if (!id) return badRequest("id of movie is missing", 401);
+
       const data = await this.movieSearchUseCases.addMovieFavoriteById(id);
       return ok(data);
     } catch (e) {
-      console.log(e)
-      return serverError(e.message);
+      return serverError(e);
     }
   }
 }

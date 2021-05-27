@@ -1,9 +1,8 @@
 import { HttpResponse } from "../ports/http";
-import { ServerError } from "../../controllers/errors/server-error";
 
-export const badRequest = (error: Error, statusCode = 400): HttpResponse => ({
+export const badRequest = (error: string, statusCode = 400): HttpResponse => ({
   statusCode,
-  body: error.message
+  body: error
 });
 
 export const ok = (data: any, statusCode = 200): HttpResponse => ({
@@ -13,5 +12,5 @@ export const ok = (data: any, statusCode = 200): HttpResponse => ({
 
 export const serverError = (reason: string): HttpResponse => ({
   statusCode: 500,
-  body: new ServerError(reason),
+  body: new Error(reason).message,
 });

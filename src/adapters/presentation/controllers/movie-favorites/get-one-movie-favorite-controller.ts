@@ -10,14 +10,14 @@ export class GetOneMovieFavoriteController implements BaseController {
     this.movieSearchUseCases = movieSearchUseCases;
   }
 
-  async  execute(httpRequest: HttpRequest): Promise<HttpResponse> {
+  async execute(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const { id } = httpRequest.params;
 
       const data = await this.movieSearchUseCases.findMovieFavoriteById(id);
       return ok(data);
     } catch (e) {
-      return serverError(e.message);
+      return serverError(e);
     }
   }
 }

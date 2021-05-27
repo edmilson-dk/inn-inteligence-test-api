@@ -10,15 +10,14 @@ export class GetAllMoviesFavoritesController implements BaseController {
     this.movieSearchUseCases = movieSearchUseCases;
   }
 
-  async  execute(httpRequest: HttpRequest): Promise<HttpResponse> {
+  async execute(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const { page, limit } = httpRequest.query;
 
       const data = await this.movieSearchUseCases.getAllMoviesFavorites(page || 1, limit || 10);
       return ok(data);
     } catch (e) {
-      console.log(e)
-      return serverError(e.message);
+      return serverError(e);
     }
   }
 }
