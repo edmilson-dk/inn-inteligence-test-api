@@ -1,4 +1,4 @@
-import { MovieSearchDataOneMovieDTO, MovieSearchDataPreviewDTO } from "src/domain/dtos/movie-search-dtos";
+import { MovieSearchDataOneMovieDTO, MovieSearchDataPreviewDTO } from "src/domain/dtos/movie-dtos";
 import { OmdbAPiSearchAllMoviesDataType, OmdbAPiSearchOneMovieDataType } from "./types";
 
 export function apiPreviewMovieDataToDTO(data: OmdbAPiSearchAllMoviesDataType): MovieSearchDataPreviewDTO {
@@ -23,5 +23,7 @@ export function apiOneMovieDataToDTO(data: OmdbAPiSearchOneMovieDataType): Movie
     language: data.Language,
     country: data.Country,
     poster: data.Poster,
+    id: data.imdbID,
+    type: data.Type
   }
 }
