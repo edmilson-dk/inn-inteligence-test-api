@@ -22,11 +22,11 @@ export class PostgresMovieFavoritesRepository implements IMovieFavoritesReposito
     const LIMIT_ITEMS = limit;
 
     const [{ count }] = await db("favorites").count();
-    
+
     const rows = await db("favorites")
-    .limit(LIMIT_ITEMS)
-    .offset((page - 1) * LIMIT_ITEMS)
-    .orderBy('created_at', 'desc');
+      .limit(LIMIT_ITEMS)
+      .offset((page - 1) * LIMIT_ITEMS)
+      .orderBy('created_at', 'desc');
 
     if (rows.length === 0) return [];
 
