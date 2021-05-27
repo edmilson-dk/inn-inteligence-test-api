@@ -17,6 +17,8 @@ export async function up(knex: Knex): Promise<void> {
         table.text('plot').notNullable();
         table.string('country').notNullable();
         table.string('runtime').notNullable();
+
+        table.timestamp('created_at').defaultTo(knex.fn.now());
       });
     }
   })
