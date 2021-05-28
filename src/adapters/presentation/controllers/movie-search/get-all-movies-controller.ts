@@ -12,9 +12,12 @@ export class GetAllMoviesController implements BaseController {
 
   async  execute(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const { page, type, title } = httpRequest.query;
+      const { page, type, title, year } = httpRequest.query;
 
-      const data = await this.movieSearchUseCases.getAllMoviesPreview(title, type, page || 1);
+      const data = await this.movieSearchUseCases.getAllMoviesPreview(
+        title, type, page || 1, 
+        Number(year) >= 1900 ? Number(year) : 0
+      );
       return ok(data);
     } catch (e) {
       return serverError(e.message);

@@ -8,11 +8,15 @@ import { apiOneMovieDataToDTO, apiPreviewMovieDataToDTO } from "./map";
 import { OmdbApiSearchAllMoviesResponseType, OmdbAPiSearchOneMovieDataType } from "./types";
 
 export class MovieApiOmdbApiRepository implements IMovieApiRepository {
-  async getAllMoviesPreview(title: string, movieType = "movie", page = 1): Promise<MovieSearchDataPreviewResponseDTO | null> {
+  async getAllMoviesPreview(title: string, movieType = "movie", page = 1, year = 0): Promise<MovieSearchDataPreviewResponseDTO | null> {
     try {
+      const query = year >= 1900
+        ? { s: title, page, type: movieType, y: year } 
+        : { s: title, page, type: movieType };
+
       const { data } = await axiosFetch.get<OmdbApiSearchAllMoviesResponseType>(
         `${process.env.API_URL_WITH_KEY}`, 
-        { params: { s: title, page, type: movieType }}
+        { params: query }
       );
     
       if (data.Response === "False") return null;

@@ -11,8 +11,8 @@ export class MovieSearchUseCases implements IMovieSearchUseCases {
     Object.freeze(this);
   }
 
-  async getAllMoviesPreview(title: string, movieType = "movie", page = 1): Promise<MovieSearchDataPreviewResponseDTO | null> {
-    const result = await this.movieApiRepository.getAllMoviesPreview(title, movieType, page);
+  async getAllMoviesPreview(title: string, movieType = "movie", page = 1, year = 0): Promise<MovieSearchDataPreviewResponseDTO | null> {
+    const result = await this.movieApiRepository.getAllMoviesPreview(title, movieType, page, year);
 
     if (!result) return null;
 
