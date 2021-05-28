@@ -7,6 +7,7 @@ export function apiPreviewMovieDataToDTO(data: OmdbAPiSearchAllMoviesDataType): 
     poster: data.Poster,
     id: data.imdbID,
     year: data.Year,
+    type: data.Type
   }
 }
 

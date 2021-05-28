@@ -2,6 +2,7 @@ export type MovieSearchDataPreviewDTO = {
   poster: string;
   title: string;
   year: string;
+  type: string;
   id: string;
 }
 
@@ -23,5 +24,10 @@ export type MovieSearchDataOneMovieDTO = {
 
 export type MoviesFavoritesResponseDTO = {
   data: MovieSearchDataOneMovieDTO[],
+  total: number;
+}
+
+export type MovieSearchDataPreviewResponseDTO = {
+  data: MovieSearchDataPreviewDTO[],
   total: number;
 }

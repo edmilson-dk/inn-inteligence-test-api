@@ -6,7 +6,8 @@ export class MovieSearchMapper {
       title: data.title,
       poster: data.poster,
       year: data.year,
-      id: data.id
+      id: data.id,
+      type: data.type,
     }
   }
 

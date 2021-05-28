@@ -1,7 +1,7 @@
 import { IMovieSearchUseCases } from "src/domain/use-cases/movie-search";
 import { IMovieApiRepository } from "src/application/repositories/movie-api";
 import { MovieSearchMapper } from "src/domain/dtos/movie-dtos/data-map";
-import { MovieSearchDataOneMovieDTO, MovieSearchDataPreviewDTO } from "src/domain/dtos/movie-dtos";
+import { MovieSearchDataOneMovieDTO, MovieSearchDataPreviewResponseDTO } from "src/domain/dtos/movie-dtos";
 
 export class MovieSearchUseCases implements IMovieSearchUseCases {
   private readonly movieApiRepository: IMovieApiRepository;
@@ -11,13 +11,16 @@ export class MovieSearchUseCases implements IMovieSearchUseCases {
     Object.freeze(this);
   }
 
-  async getAllMoviesPreview(title: string, movieType = "movie", page = 1): Promise<MovieSearchDataPreviewDTO[] | []> {
+  async getAllMoviesPreview(title: string, movieType = "movie", page = 1): Promise<MovieSearchDataPreviewResponseDTO | null> {
     const result = await this.movieApiRepository.getAllMoviesPreview(title, movieType, page);
 
-    if (!result) return [];
+    if (!result) return null;
 
-    const data = result.map(item => MovieSearchMapper.previewMoviesToDto(item));
-    return data;
+    const data = result.data.map(item => MovieSearchMapper.previewMoviesToDto(item));
+    return {
+      data,
+      total: result.total
+    };
   }
 
   async getOneMovieById(id: string): Promise<MovieSearchDataOneMovieDTO | []> {
