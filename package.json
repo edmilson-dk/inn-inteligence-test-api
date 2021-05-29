@@ -1,14 +1,15 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/main/server.js",
   "repository": "git@github.com:edmilson-dk/inn-inteligence-test-api.git",
   "author": "edmilson-dk <droidvidaboa@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "npm run knex:migrate:latest && npm run build && NODE_PATH=./build node build/src/main/server.js",
+    "start": "NODE_PATH=./build node build/src/main/server.js",
     "dev": "NODE_PATH=./ npx ts-node-dev --respawn --pretty --transpile-only src/main/server.ts",
+    "postinstall": "npm run knex:migrate:latest && npm run build",
     "knex:migrate:make": "knex --knexfile knexfile.ts -x ts migrate:make",
     "knex:migrate:latest": "knex --knexfile knexfile.ts migrate:latest",
     "knex:migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback --all"
