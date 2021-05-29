@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "npx knex migrate:latest && npm run build && NODE_PATH=./build node build/src/main/server.js",
+    "start": "npm run knex:migrate:latest && npm run build && NODE_PATH=./build node build/src/main/server.js",
     "dev": "NODE_PATH=./ npx ts-node-dev --respawn --pretty --transpile-only src/main/server.ts",
     "knex:migrate:make": "knex --knexfile knexfile.ts -x ts migrate:make",
     "knex:migrate:latest": "knex --knexfile knexfile.ts migrate:latest",
@@ -31,6 +31,7 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "knex": "^0.95.6",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "ts-node": "^10.0.0"
   }
 }
