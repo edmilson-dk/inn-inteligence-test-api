@@ -1,13 +1,13 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const pg = require("pg");
+import pg from 'pg';
 
 pg.defaults.ssl = {
   rejectUnauthorized: false,
 }
 
-module.exports = {
+export default {
   development: {
     client: process.env.DB_CLIENT,
     connection: {
